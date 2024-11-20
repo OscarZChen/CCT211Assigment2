@@ -36,13 +36,15 @@ def write_data():
 
 
 window = tkinter.Tk() 
-window.title("Entry Validation with Dialog") 
+window.title("User Data Centre") 
 window.geometry('700x500') 
 
 #everything below in this block is connected variable
 first_name_value = tkinter.StringVar(window)
 last_name_value = tkinter.StringVar(window)
 student_number_value = tkinter.StringVar(window)
+date_of_birth_value = tkinter.StringVar(window)
+passwords = tkinter.StringVar(window)
 
 #data_frame is connected variable
 data_frame = tkinter.LabelFrame(window, text="Student Info")
@@ -60,14 +62,31 @@ last_name_label.grid(row=1, column=0)
 last_name_entry = tkinter.Entry(input_frame, textvariable=last_name_value) 
 last_name_entry.grid(row=1, column=1)
 
+date_of_birth_label = tkinter.Label(input_frame, text="Date of Birth ")
+date_of_birth_label.grid(row=0, column=2)
+date_of_birth_entry = tkinter.Entry(input_frame, textvariable=student_number_value) 
+date_of_birth_entry.grid(row=0, column=3)
+
 student_number_label = tkinter.Label(input_frame, text="Student Number ")
-student_number_label.grid(row=2, column=0)
+student_number_label.grid(row=1, column=2)
 student_number_entry = tkinter.Entry(input_frame, textvariable=student_number_value) 
-student_number_entry.grid(row=2, column=1)
+student_number_entry.grid(row=1, column=3)
+
+passwords_label = tkinter.Label(input_frame, text="New password ")
+passwords_label.grid(row=2, column=0)
+passwords_entry = tkinter.Entry(input_frame, textvariable=student_number_value) 
+passwords_entry.grid(row=2, column=1)
+
+checkboxA = tkinter.IntVar()
+checkbox_A_check_button = tkinter.Checkbutton(input_frame, 
+    text="Confirm?",
+    variable=checkboxA,
+    onvalue = 1, offvalue = 0)
+checkbox_A_check_button.grid(row=2, column=2)
 
 submit_button = tkinter.Button(input_frame, text='Submit', command=write_data)
-submit_button.grid(row=3, column=1)
+submit_button.grid(row=4, column=1)
 
 show_button = tkinter.Button(input_frame, text='Show Data', command=read_data)
-show_button.grid(row=3, column=0)
+show_button.grid(row=4, column=3)
 tkinter.mainloop()
