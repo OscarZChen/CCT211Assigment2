@@ -1,42 +1,38 @@
-import tkinter
 import csv
+import tkinter
+
+# Define the file path as a global variable
+# PLEASE EDIT THIS TO YOUR MACHINE
+DATA_FILE_PATH = r"C:\Users\oscar\Documents\Work\CCT211H5_F(coding)\assigment2_part1-3\Data.csv"
 
 def read_data():
     table = []
-    #PLEASE EDIT TO YOUR MACHINE
-    with open('C:\\Users\\oscar\\Documents\\Work\\CCT211H5_F(coding)\\assigment2\\Data.csv', mode='r') as file:
+    # Open the file using the global path variable
+    with open(DATA_FILE_PATH, mode='r') as file:
         csvFile = csv.reader(file)
         for line in csvFile:
             table.append(line)
-    file.close()
     # Initialize the data frame
     for widget in data_frame.winfo_children():
-        widget.destroy()  
-    # Now table is the csv file in nested-list form
-    for row_num in range(len(table)):
-        for column_num in range(len(table[row_num])):
-            cell_value = table[row_num][column_num]
+        widget.destroy()
+    # Populate the data frame
+    for row_num, row in enumerate(table):
+        for column_num, cell_value in enumerate(row):
             cell_label = tkinter.Label(data_frame, text=cell_value)
             cell_label.grid(row=row_num, column=column_num)
 
 def write_data():
     table = []
-    #Reads file first to copy into list, then edit, then edit to csv file.
-    #PLEASE EDIT TO YOUR MACHINE
-    with open('C:\\Users\\oscar\\Documents\\Work\\CCT211H5_F(coding)\\assigment2\\Data.csv', mode='r') as file:
+    # Read the file into a list
+    with open(DATA_FILE_PATH, mode='r') as file:
         csvFile = csv.reader(file)
         for line in csvFile:
             table.append(line)
-    
-    # Now table is the csv file in nested-list form
-    # Update the table and do the write
+    # Update the table and write back
     table.append([first_name_value.get(), last_name_value.get(), student_number_value.get()])
-    #PLEASE EDIT TO YOUR MACHINE
-    with open('C:\\Users\\oscar\\Documents\\Work\\CCT211H5_F(coding)\\assigment2\\Data.csv', mode='w', newline='') as file:
+    with open(DATA_FILE_PATH, mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerows(table)
-
-        window = tkinter.Tk() 
 
 
 window = tkinter.Tk() 
