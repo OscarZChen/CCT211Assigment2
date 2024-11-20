@@ -3,6 +3,7 @@ import csv
 
 def read_data():
     table = []
+    #PLEASE EDIT TO YOUR MACHINE
     with open('C:\\Users\\oscar\\Documents\\Work\\CCT211H5_F(coding)\\assigment2\\Data.csv', mode='r') as file:
         csvFile = csv.reader(file)
         for line in csvFile:
@@ -21,6 +22,7 @@ def read_data():
 def write_data():
     table = []
     #Reads file first to copy into list, then edit, then edit to csv file.
+    #PLEASE EDIT TO YOUR MACHINE
     with open('C:\\Users\\oscar\\Documents\\Work\\CCT211H5_F(coding)\\assigment2\\Data.csv', mode='r') as file:
         csvFile = csv.reader(file)
         for line in csvFile:
@@ -29,6 +31,7 @@ def write_data():
     # Now table is the csv file in nested-list form
     # Update the table and do the write
     table.append([first_name_value.get(), last_name_value.get(), student_number_value.get()])
+    #PLEASE EDIT TO YOUR MACHINE
     with open('C:\\Users\\oscar\\Documents\\Work\\CCT211H5_F(coding)\\assigment2\\Data.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerows(table)
